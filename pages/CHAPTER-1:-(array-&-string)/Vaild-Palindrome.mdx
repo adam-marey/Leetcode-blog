@@ -1,0 +1,59 @@
+## Vaild Palindrome
+
+`Difficulty: Easy, Frequency: Medium`
+
+**Source on Leetcode:** [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+
+A phrase is a `palindrome` if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string `s`, return `true` if it is a palindrome, or `false` otherwise.
+
+
+**Example:**
+
+```
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+
+```
+**Example:**
+
+```
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+```
+
+
+<details>
+<summary>Click to view solution</summary>
+
+```js
+var isPalindrome = function(s) {
+    s = s.toLowerCase();
+    let alphanumeric = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let filtered = "";
+    
+    for (let i = 0; i < s.length; i++) {
+        if (alphanumeric.includes(s[i])) {
+            filtered += s[i];
+        }
+    }
+    return filtered === filtered.split("").reverse().join("");
+};
+```
+</details>
+
+**Time complexity:**
+
+
+The time complexity of this function is `O(n)`, where n is the length of the input string `s`.
+
+The function performs two main operations: filtering the alphanumeric characters from the input string, and checking if the filtered string is a palindrome.
+
+The first operation uses a for loop to iterate through each character in the string and adds it to a new string `filtered` if it is included in the `alphanumeric` string. The time required for this operation is proportional to the length of the input string, so its time complexity is O(n).
+
+The second operation uses the built-in `split`, `reverse`, and `join` methods to reverse the filtered string and compare it to the original. These operations each take O(n) time, so the overall time complexity of the second operation is O(n).
+
+The total time complexity of the function is `O(n) + O(n) = O(n)`.

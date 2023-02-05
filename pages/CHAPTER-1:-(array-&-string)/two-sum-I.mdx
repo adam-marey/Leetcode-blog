@@ -1,0 +1,61 @@
+# Two Sum
+
+`Difficulty: Easy, Frequency: High`
+
+
+**Source on Leetcode:** [two sum I](https://leetcode.com/problems/two-sum/)
+
+
+Given an array of integers `nums` and an integer `target`, return `indices` of the two numbers such that they add up to `target`.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+**Example:**
+
+```
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+```
+
+**Example:**
+
+```
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+```
+
+<details>
+<summary>Click to view solution</summary>
+
+```js
+function twoSum(nums, target) {
+  // Declare an empty object to store the complement value of each number
+  let map = {};
+  
+  // Iterate through each element in the nums array
+  for (let i = 0; i < nums.length; i++) {
+    // Calculate the complement of the current element by subtracting it from the target value
+    let complement = target - nums[i];
+    
+    // If the complement of the current element is found in the map object, return the indices of the two elements
+    if (map[complement] !== undefined) {
+      return [map[complement], i];
+    }
+    
+    // Store the current element and its index in the map object for future reference
+    map[nums[i]] = i;
+  }
+}
+```
+</details>
+
+**Time complexity:**
+
+The time complexity of this function is `O(n)`.
+The function uses a single for loop to iterate through each element in the nums array, and for each iteration, it performs a constant amount of work (calculating the complement, checking if it's in the map, and storing the element in the map if it's not).
+Therefore, the time required for this function grows linearly with the size of the input array, making its time complexity O(n).
+

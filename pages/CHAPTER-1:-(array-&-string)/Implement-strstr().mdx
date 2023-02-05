@@ -1,0 +1,56 @@
+## Find the Index of the First Occurrence in a String
+`Difficulty: Easy, Frequency: High`
+
+
+Given two strings `needle` and `haystack`, return the `index` of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
+
+
+**Example:**
+
+```
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+```
+**Example:**
+
+```
+Input: haystack = "leetcode", needle = "leeto"
+Output: -1
+Explanation: "leeto" did not occur in "leetcode", so we return -1.
+```
+
+
+<details>
+<summary>Click to view solution</summary>
+
+```js
+var strStr = function(haystack, needle) {
+    for (let hIdx = 0; hIdx <= haystack.length - needle.length; hIdx++) {
+    //O(n * ...) where n is the number of letters in haystack
+    for (let nIdx = 0; nIdx < needle.length; nIdx++) {
+      //O(m * ...) where m is the number of letters in needle
+      if (haystack[hIdx + nIdx] !== needle[nIdx]) break;
+      //O(1) constant
+      if (nIdx + 1 === needle.length) return hIdx;
+      //O(1) constant
+    }
+  }
+  return -1;
+};
+```
+</details>
+
+**Time complexity:**
+
+The time complexity of this function is `O(n * m)`, where n is the number of characters in the haystack and `m` is the number of characters in the needle.
+
+The function uses nested for loops to compare the characters of the needle with the characters of a sub-string of the haystack, starting from each possible starting index in the haystack.
+
+The outer loop has a complexity of `O(n - m + 1)`, as it runs `n - m + 1` times, where n is the length of the haystack and `m` is the length of the needle.
+
+The inner loop has a complexity of `O(m)`, as it runs `m` times, where m is the length of the needle.
+
+Therefore, the overall time complexity of the function is `O((n - m + 1) * m) = O(n * m)`.
