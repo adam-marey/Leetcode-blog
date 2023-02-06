@@ -1,0 +1,55 @@
+## Longest Palindromic Substring
+
+`Difficulty: Medium, Frequency: Medium`
+
+**Source on Leetcode:** [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/) 
+
+Given a string `s`, return the longest palindromic substring in `s`.
+
+- **A string is palindromic if it reads the same forward and backward.**
+
+**Example:**
+
+```
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+```
+
+```
+Input: s = "cbbd"
+Output: "bb"
+```
+
+
+<details>
+<summary>Click to view solution</summary>
+
+```js
+
+function longestPalindrome(s) {
+  // left and right variables are used to keep track of the indices of the longest palindrome substring
+  let left = 0, right = 0;
+
+  // this outer loop iterates through each character in the string
+  for (let i = 0; i < s.length; i++) {
+    // this inner loop considers two cases - when the palindrome is of odd length and when it's of even length
+    // by checking both i and i+1 as the center of the palindrome
+    for (let j of [i, i+1]) {
+      // l and r variables keep track of the indices while expanding the substring to check if it's a palindrome
+      for (l = i, r = j; s[l] && s[l] === s[r]; l--, r++)
+        // update the [left, right] indices with the new longer palindrome substring
+        [left, right] = (r-l+1) > (right-left+1) ? [l, r] : [left, right];
+    }
+  }
+  // return the longest palindromic substring
+  return s.substring(left, right+1);
+}
+
+
+
+```
+**Time complexity:**
+
+The time complexity of the given code is O(n^3), where n is the length of the input string "s". This is because the code uses nested loops to generate substrings and check if they are palindromes, and the time taken grows quickly with the size of n.
+</details>

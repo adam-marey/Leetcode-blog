@@ -43,17 +43,16 @@ var isPalindrome = function(s) {
     return filtered === filtered.split("").reverse().join("");
 };
 ```
-</details>
-
 **Time complexity:**
 
+- The time complexity of this function is `O(n)`, where n is the length of the input string `s`.
 
-The time complexity of this function is `O(n)`, where n is the length of the input string `s`.
+- The function performs two main operations: filtering the alphanumeric characters from the input string, and checking if the filtered string is a palindrome.
 
-The function performs two main operations: filtering the alphanumeric characters from the input string, and checking if the filtered string is a palindrome.
+- The first operation uses a for loop to iterate through each character in the string and adds it to a new string `filtered` if it is included in the `alphanumeric` string. The time required for this operation is proportional to the length of the input string, so its time complexity is O(n).
 
-The first operation uses a for loop to iterate through each character in the string and adds it to a new string `filtered` if it is included in the `alphanumeric` string. The time required for this operation is proportional to the length of the input string, so its time complexity is O(n).
+- The second operation uses the built-in `split`, `reverse`, and `join` methods to reverse the filtered string and compare it to the original. These operations each take O(n) time, so the overall time complexity of the second operation is O(n).
 
-The second operation uses the built-in `split`, `reverse`, and `join` methods to reverse the filtered string and compare it to the original. These operations each take O(n) time, so the overall time complexity of the second operation is O(n).
+- The total time complexity of the function is `O(n) + O(n) = O(n)`.
+</details>
 
-The total time complexity of the function is `O(n) + O(n) = O(n)`.

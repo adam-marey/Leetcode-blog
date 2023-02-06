@@ -1,6 +1,8 @@
 ## Find the Index of the First Occurrence in a String
+
 `Difficulty: Easy, Frequency: High`
 
+**Source on Leetcode:** [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)
 
 Given two strings `needle` and `haystack`, return the `index` of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
 
@@ -41,16 +43,15 @@ var strStr = function(haystack, needle) {
   return -1;
 };
 ```
-</details>
-
 **Time complexity:**
 
-The time complexity of this function is `O(n * m)`, where n is the number of characters in the haystack and `m` is the number of characters in the needle.
+- The time complexity of this function is `O(n * m)`, where n is the number of characters in the haystack and `m` is the number of characters in the needle.
 
-The function uses nested for loops to compare the characters of the needle with the characters of a sub-string of the haystack, starting from each possible starting index in the haystack.
+- The function uses nested for loops to compare the characters of the needle with the characters of a sub-string of the haystack, starting from each possible starting index in the haystack.
 
-The outer loop has a complexity of `O(n - m + 1)`, as it runs `n - m + 1` times, where n is the length of the haystack and `m` is the length of the needle.
+- The outer loop has a complexity of `O(n - m + 1)`, as it runs `n - m + 1` times, where n is the length of the haystack and `m` is the length of the needle.
 
-The inner loop has a complexity of `O(m)`, as it runs `m` times, where m is the length of the needle.
+- The inner loop has a complexity of `O(m)`, as it runs `m` times, where m is the length of the needle.
 
-Therefore, the overall time complexity of the function is `O((n - m + 1) * m) = O(n * m)`.
+- Therefore, the overall time complexity of the function is `O((n - m + 1) * m) = O(n * m)`.
+</details>

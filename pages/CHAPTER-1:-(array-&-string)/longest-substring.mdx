@@ -1,0 +1,73 @@
+## Longest Substring Without Repeating Characters
+
+`Difficulty: Medium, Frequency: Medium`
+
+**Source on Leetcode:** [Valid Number](https://leetcode.com/problems/valid-number/)
+
+Given a string, find the length of the longest substring without repeating characters. For
+example, the longest substring without repeating letters for `“abcabcbb”` is `“abc”`, which
+the length is `3`. For `“bbbbb”` the longest substring is `“b”`, with the length of `1`.
+
+**Example:**
+
+```
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+```
+```
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+```
+```
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+```
+
+<details>
+<summary>Click to view solution</summary>
+
+```js
+const lengthOfLongestSubstring = str => {
+    // Initialize the maximum length of the longest substring without repeating characters
+    let max_length = 0;
+    // Initialize the current length of the substring without repeating characters
+    let current = 0;
+    // Initialize a hash table to store characters as keys and their indices as values
+    let hash = {}; 
+    
+    // If the input string has less than 2 characters, return the length of the string
+    if(str.length < 2) {
+        return str.length;
+    }
+    
+    // Iterate over the input string
+    for(let i = 0; i < str.length;  i++) {
+        // If the current character is not in the hash table
+        if(hash[str[i]] == null) {
+            // Increment the current length of the substring without repeating characters
+            current += 1;
+        } else {
+            // Update the current length of the substring without repeating characters
+            // by taking the minimum of the difference between the current index and the previous index of the character, 
+            // and the current length plus 1
+            current = Math.min(i - hash[str[i]], current + 1);
+        }
+        
+        // Update the maximum length of the longest substring without repeating characters
+        max_length = Math.max(max_length, current);
+        // Update the hash table with the current character and its index
+        hash[str[i]] = i; 
+    }
+    // Return the maximum length of the longest substring without repeating characters
+    return max_length;
+};
+
+```
+**Time complexity:**
+
+The time complexity of this code is `O(n)`, where n is the length of the input string. This is because in the worst case scenario, the code iterates through the entire string and updates the hash object and the current and max_length variables once for each character in the string. The hash object allows for constant time lookups and updates, so the overall time complexity is linear in the size of the input.
+</details>
