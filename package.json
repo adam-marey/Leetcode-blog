@@ -1,7 +1,7 @@
 {
-  "name": "nextra-docs-template",
+  "name": "leetcode-adam",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Leetcode Explained with Adam",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
